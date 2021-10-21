@@ -56,7 +56,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/grhodes/Projects/2021/Gettysburg/Sources/Gettysburg"
+            argument = "/Users/grhodes/Projects/2020/SwiftProjects/Gettysburg/Sources/Gettysburg"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

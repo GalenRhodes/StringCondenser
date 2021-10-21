@@ -28,7 +28,7 @@ struct StringCondenser: ParsableCommand {
     @Option(name: [ .long, .customShort("m") ], help: "The name of the source file with the global variables.") var messagesSourceFile: String = "Messages.swift"
 
     mutating func run() throws {
-        let _msgSrcFile = FileManager.default.
+        let _msgSrcFile = "\(sourceDirectory)/\(messagesSourceFile)"
         print("    Source Directory: \(sourceDirectory)")
         print("    Archive Filename: \(archiveFile)")
         print("Messages Source File: \(_msgSrcFile)")
