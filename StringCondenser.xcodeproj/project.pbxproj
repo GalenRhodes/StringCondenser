@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1117DACDCEBE801C6A355276 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D77798EE5FA4CA2BC6F9 /* main.swift */; };
 		831C002627209B2B0084F284 /* Rubicon in Frameworks */ = {isa = PBXBuildFile; productRef = 831C002527209B2B0084F284 /* Rubicon */; };
+		8360F7C82720FCE000E732AA /* SourceKittenFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 8360F7C72720FCE000E732AA /* SourceKittenFramework */; };
 		8366AD862720A3E2004A21C2 /* RedBlackTree in Frameworks */ = {isa = PBXBuildFile; productRef = 8366AD852720A3E2004A21C2 /* RedBlackTree */; };
 		8366AD892720A4F6004A21C2 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8366AD882720A4F6004A21C2 /* ArgumentParser */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1117D2AB0EC0FC93DDA01124 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1117D44668D7FA022D5AE88C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+		1117D4B3E26786B3DC52346C /* .jazzy.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .jazzy.yaml; sourceTree = "<group>"; };
+		1117D5B5AB1735709CF175DB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1117D5DB159CFE80A8AE4D32 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		1117D77798EE5FA4CA2BC6F9 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		837C7545272093E600531F0F /* StringCondenser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StringCondenser; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +44,7 @@
 				8366AD892720A4F6004A21C2 /* ArgumentParser in Frameworks */,
 				8366AD862720A3E2004A21C2 /* RedBlackTree in Frameworks */,
 				831C002627209B2B0084F284 /* Rubicon in Frameworks */,
+				8360F7C82720FCE000E732AA /* SourceKittenFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +73,10 @@
 				837C7546272093E600531F0F /* Products */,
 				1117DEDCB0E4CD82AC6B2FB8 /* Sources */,
 				1117D5DB159CFE80A8AE4D32 /* Package.swift */,
+				1117D44668D7FA022D5AE88C /* .gitignore */,
+				1117D5B5AB1735709CF175DB /* LICENSE */,
+				1117D2AB0EC0FC93DDA01124 /* README.md */,
+				1117D4B3E26786B3DC52346C /* .jazzy.yaml */,
 			);
 			sourceTree = "<group>";
 			wrapsLines = 1;
@@ -99,6 +109,7 @@
 				831C002527209B2B0084F284 /* Rubicon */,
 				8366AD852720A3E2004A21C2 /* RedBlackTree */,
 				8366AD882720A4F6004A21C2 /* ArgumentParser */,
+				8360F7C72720FCE000E732AA /* SourceKittenFramework */,
 			);
 			productName = StringCondenser;
 			productReference = 837C7545272093E600531F0F /* StringCondenser */;
@@ -130,9 +141,10 @@
 			);
 			mainGroup = 837C753C272093E600531F0F;
 			packageReferences = (
-				831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */,
+				831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */,
 				8366AD842720A3E2004A21C2 /* XCRemoteSwiftPackageReference "RedBlackTree" */,
-				8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */,
+				8360F7C62720FCE000E732AA /* XCRemoteSwiftPackageReference "SourceKitten" */,
 			);
 			productRefGroup = 837C7546272093E600531F0F /* Products */;
 			projectDirPath = "";
@@ -320,12 +332,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */ = {
+		831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GalenRhodes/Rubicon.git";
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 0.8.0;
+			};
+		};
+		8360F7C62720FCE000E732AA /* XCRemoteSwiftPackageReference "SourceKitten" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jpsim/SourceKitten";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.31.1;
 			};
 		};
 		8366AD842720A3E2004A21C2 /* XCRemoteSwiftPackageReference "RedBlackTree" */ = {
@@ -336,7 +356,7 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+		8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
 			requirement = {
@@ -349,8 +369,13 @@
 /* Begin XCSwiftPackageProductDependency section */
 		831C002527209B2B0084F284 /* Rubicon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */;
+			package = 831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */;
 			productName = Rubicon;
+		};
+		8360F7C72720FCE000E732AA /* SourceKittenFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8360F7C62720FCE000E732AA /* XCRemoteSwiftPackageReference "SourceKitten" */;
+			productName = SourceKittenFramework;
 		};
 		8366AD852720A3E2004A21C2 /* RedBlackTree */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -359,7 +384,7 @@
 		};
 		8366AD882720A4F6004A21C2 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			package = 8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */;
 			productName = ArgumentParser;
 		};
 /* End XCSwiftPackageProductDependency section */

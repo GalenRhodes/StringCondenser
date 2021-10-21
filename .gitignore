@@ -1,0 +1,7 @@
+/StringCondenser.xcodeproj/project.xcworkspace/xcuserdata/grhodes.xcuserdatad/xcschemes/
+/.build/
+/build/
+**/.DS_Store
+**/grhodes.xcuserdatad/
+/bin/
+/StringCondenser.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
