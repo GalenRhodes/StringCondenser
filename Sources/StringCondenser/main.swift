@@ -37,9 +37,13 @@ struct StringCondenser: ParsableCommand {
             let fn = "\(path)/\(file)"
             guard fn != _msgSrcFile else { return false }
             guard fn.hasSuffix(".swift") else { return false }
-            print("\"\(fn)\"")
             return true
         }
+
+        print()
+        for f in files { print(f) }
+
+
     }
 }
 

@@ -33,6 +33,7 @@
 		1117D5B5AB1735709CF175DB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1117D5DB159CFE80A8AE4D32 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		1117D77798EE5FA4CA2BC6F9 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1117D8818B8FE8D0E8AC6A0A /* Notes on SourceKittenFramework.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Notes on SourceKittenFramework.md"; sourceTree = "<group>"; };
 		837C7545272093E600531F0F /* StringCondenser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StringCondenser; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,6 +60,14 @@
 			path = StringCondenser;
 			sourceTree = "<group>";
 		};
+		1117D2086FF890BDEC61B01D /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				1117D8818B8FE8D0E8AC6A0A /* Notes on SourceKittenFramework.md */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		1117DEDCB0E4CD82AC6B2FB8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +86,7 @@
 				1117D5B5AB1735709CF175DB /* LICENSE */,
 				1117D2AB0EC0FC93DDA01124 /* README.md */,
 				1117D4B3E26786B3DC52346C /* .jazzy.yaml */,
+				1117D2086FF890BDEC61B01D /* Documentation */,
 			);
 			sourceTree = "<group>";
 			wrapsLines = 1;
