@@ -19,6 +19,7 @@ import Foundation
 import CoreFoundation
 import Rubicon
 import ArgumentParser
+import SourceKittenFramework
 
 struct StringCondenser: ParsableCommand {
     static let configuration = CommandConfiguration(abstract: "Condense string literals into global variables.")
@@ -41,9 +42,36 @@ struct StringCondenser: ParsableCommand {
         }
 
         print()
-        for f in files { print(f) }
+        // for f in files { print(f) }
+        let results = try decodeFile(_msgSrcFile: _msgSrcFile)
 
+        for f in files {
+            let fileResults = try decodeFile(_msgSrcFile: f)
+        }
 
+//        let sd: SwiftDocs = SwiftDocs(file: file, arguments: [ "-scheme", "Z28", "-jobs", "8" ])!
+//        print(sd.description)
+
+//        guard let mod: Module = Module(xcodeBuildArguments: [ "-scheme", "Gettysburg" ], inPath: sourceDirectory.deletingLastPathComponent.deletingLastPathComponent) else {
+//            throw StreamError.UnknownError()
+//        }
+//        print(mod.description)
+//        let swiftDocs = mod.docs
+//        print("Number of doc files: \(swiftDocs.count)")
+    }
+
+    private func decodeFile(_msgSrcFile: String) throws -> [String:SourceKitRepresentable] {
+        guard let file = File(path: _msgSrcFile) else { throw StreamError.FileNotFound(description: _msgSrcFile) }
+        let results = try Request.editorOpen(file: file).send()
+        print(try decodedToJSON(results: results))
+        return results
+    }
+
+    private func decodedToJSON(results: [String: SourceKitRepresentable]) throws -> String {
+        for k in results.keys { print("Key: \(k)") }
+        let nsResults = toNSDictionary(results)
+        let data      = try JSONSerialization.data(withJSONObject: nsResults, options: [ .prettyPrinted, .sortedKeys ])
+        return String(data: data, encoding: .utf8)!
     }
 }
 
