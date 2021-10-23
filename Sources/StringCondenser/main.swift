@@ -29,51 +29,32 @@ struct StringCondenser: ParsableCommand {
     @Option(name: [ .long, .customShort("m") ], help: "The name of the source file with the global variables.") var messagesSourceFile: String = "Messages.swift"
 
     mutating func run() throws {
-        let _msgSrcFile = "\(sourceDirectory)/\(messagesSourceFile)"
-        print("    Source Directory: \(sourceDirectory)")
-        print("    Archive Filename: \(archiveFile)")
-        print("Messages Source File: \(_msgSrcFile)")
-
-        let files: [String] = try FileManager.default.directoryFiles(atPath: sourceDirectory) { path, file, attrs in
+        var messageSource: SourceFile = try SourceFile(filename: "\(sourceDirectory)/\(messagesSourceFile)")
+        var sourceFiles: [SourceFile] = try FileManager.default.directoryFiles(atPath: sourceDirectory, where: { path, file, attrs in
             let fn = "\(path)/\(file)"
-            guard fn != _msgSrcFile else { return false }
+            guard fn != messageSource.filename else { return false }
             guard fn.hasSuffix(".swift") else { return false }
             return true
-        }
+        }).map { try SourceFile(filename: $0) }
 
+        print("    Source Directory: \(sourceDirectory)")
+        print("    Archive Filename: \(archiveFile)")
+        print("Messages Source File: \(messageSource.filename)")
         print()
-        // for f in files { print(f) }
-        let results = try decodeFile(_msgSrcFile: _msgSrcFile)
-
-        for f in files {
-            let fileResults = try decodeFile(_msgSrcFile: f)
-        }
-
-//        let sd: SwiftDocs = SwiftDocs(file: file, arguments: [ "-scheme", "Z28", "-jobs", "8" ])!
-//        print(sd.description)
-
-//        guard let mod: Module = Module(xcodeBuildArguments: [ "-scheme", "Gettysburg" ], inPath: sourceDirectory.deletingLastPathComponent.deletingLastPathComponent) else {
-//            throw StreamError.UnknownError()
-//        }
-//        print(mod.description)
-//        let swiftDocs = mod.docs
-//        print("Number of doc files: \(swiftDocs.count)")
     }
 
-    private func decodeFile(_msgSrcFile: String) throws -> [String:SourceKitRepresentable] {
-        guard let file = File(path: _msgSrcFile) else { throw StreamError.FileNotFound(description: _msgSrcFile) }
-        let results = try Request.editorOpen(file: file).send()
-        print(try decodedToJSON(results: results))
-        return results
+    @inlinable func decodeFile(filename: String) throws -> [String: SourceKitRepresentable] {
+        guard let file = File(path: filename) else { throw StreamError.FileNotFound(description: filename) }
+        return try Request.editorOpen(file: file).send()
     }
 
-    private func decodedToJSON(results: [String: SourceKitRepresentable]) throws -> String {
-        for k in results.keys { print("Key: \(k)") }
-        let nsResults = toNSDictionary(results)
-        let data      = try JSONSerialization.data(withJSONObject: nsResults, options: [ .prettyPrinted, .sortedKeys ])
-        return String(data: data, encoding: .utf8)!
+    @inlinable func decodedToJSON(data: [String: SourceKitRepresentable]) throws -> String {
+        String(data: try JSONSerialization.data(withJSONObject: toNSDictionary(data), options: [ .prettyPrinted, .sortedKeys ]), encoding: .utf8)!
     }
 }
 
-DispatchQueue.main.async { StringCondenser.main(); exit(0) }
+DispatchQueue.main.async {
+    StringCondenser.main()
+    exit(0)
+}
 dispatchMain()

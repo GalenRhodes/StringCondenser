@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D312CD5AC7FB9C45D578 /* SourceFile.swift */; };
 		1117DACDCEBE801C6A355276 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D77798EE5FA4CA2BC6F9 /* main.swift */; };
 		831C002627209B2B0084F284 /* Rubicon in Frameworks */ = {isa = PBXBuildFile; productRef = 831C002527209B2B0084F284 /* Rubicon */; };
 		8360F7C82720FCE000E732AA /* SourceKittenFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 8360F7C72720FCE000E732AA /* SourceKittenFramework */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		1117D2AB0EC0FC93DDA01124 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1117D312CD5AC7FB9C45D578 /* SourceFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
 		1117D44668D7FA022D5AE88C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		1117D4B3E26786B3DC52346C /* .jazzy.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .jazzy.yaml; sourceTree = "<group>"; };
 		1117D5B5AB1735709CF175DB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				1117D77798EE5FA4CA2BC6F9 /* main.swift */,
+				1117D312CD5AC7FB9C45D578 /* SourceFile.swift */,
 			);
 			path = StringCondenser;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1117DACDCEBE801C6A355276 /* main.swift in Sources */,
+				1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
