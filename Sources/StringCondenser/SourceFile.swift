@@ -19,7 +19,7 @@ import CoreFoundation
 import Rubicon
 import SourceKittenFramework
 
-struct SourceFile {
+struct SourceFile: CustomStringConvertible {
     let file:     File
     let filename: String
 
@@ -36,5 +36,17 @@ struct SourceFile {
         if let d = data { return d }
         data = try Request.editorOpen(file: file).send()
         return data!
+    }
+
+
+
+    @inlinable var description: String {
+        do {
+            var me = self
+            return String(data: try JSONSerialization.data(withJSONObject: toNSDictionary(try me.sourceData()), options: [ .prettyPrinted, .sortedKeys ]), encoding: .utf8)!
+        }
+        catch {
+            fatalError(error.localizedDescription)
+        }
     }
 }

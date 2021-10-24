@@ -41,15 +41,7 @@ struct StringCondenser: ParsableCommand {
         print("    Archive Filename: \(archiveFile)")
         print("Messages Source File: \(messageSource.filename)")
         print()
-    }
-
-    @inlinable func decodeFile(filename: String) throws -> [String: SourceKitRepresentable] {
-        guard let file = File(path: filename) else { throw StreamError.FileNotFound(description: filename) }
-        return try Request.editorOpen(file: file).send()
-    }
-
-    @inlinable func decodedToJSON(data: [String: SourceKitRepresentable]) throws -> String {
-        String(data: try JSONSerialization.data(withJSONObject: toNSDictionary(data), options: [ .prettyPrinted, .sortedKeys ]), encoding: .utf8)!
+        print(messageSource)
     }
 }
 
