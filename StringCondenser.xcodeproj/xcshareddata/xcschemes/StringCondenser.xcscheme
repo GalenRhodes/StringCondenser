@@ -35,11 +35,12 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
+      useCustomWorkingDirectory = "YES"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      customWorkingDirectory = "/Users/grhodes/Projects/2020/SwiftProjects/Rubicon">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -52,19 +53,23 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-d"
+            argument = "--"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/grhodes/Projects/2020/SwiftProjects/Gettysburg/Sources/Gettysburg"
+            argument = "-scheme"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-m"
+            argument = "Rubicon"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "Common/Messages.swift"
+            argument = "-jobs"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "24"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

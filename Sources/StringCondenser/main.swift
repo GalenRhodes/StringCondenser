@@ -22,26 +22,70 @@ import ArgumentParser
 import SourceKittenFramework
 
 struct StringCondenser: ParsableCommand {
-    static let configuration = CommandConfiguration(abstract: "Condense string literals into global variables.")
+    static let configuration = CommandConfiguration(abstract: "Condense string literals into global variables.", discussion:
+    """
+    TBD
+    """)
 
-    @Option(name: [ .long, .customShort("d") ], help: "The directory to search for source files.") /*        */ var sourceDirectory:    String
-    @Option(name: [ .long, .customShort("a") ], help: "The filename of the backup TAR file.") /*             */ var archiveFile:        String = "SourceBackup.tar.bz2"
-    @Option(name: [ .long, .customShort("m") ], help: "The name of the source file with the global variables.") var messagesSourceFile: String = "Messages.swift"
+    enum BuildMode: String, ExpressibleByArgument {
+        case xcode, spm
+    }
+
+    //@f:0
+    @Option(name: [ .long, .customShort("p") ], help: "The path to the project. (defaults to current working directory)") var projectPath:        String?
+    @Option(name: [ .long, .customShort("m") ], help: "The name of the module.")                                          var moduleName:         String?
+    @Option(name: [ .long, .customShort("s") ], help: "The name of the source file with the global variables.")           var messagesSourceFile: String    = "Messages.swift"
+    @Option(name: [ .long, .customShort("b") ], help: "Build Mode: \"xcode\" or \"spm\" (Swift Package Manager).")        var buildMode:          BuildMode = .xcode
+    @Argument(help: "Build arguments to be passed to either Xcode or the Swift Package Manager.")                         var buildArguments:     [String]  = []
+    //@f:1
 
     mutating func run() throws {
-        var messageSource: SourceFile = try SourceFile(filename: "\(sourceDirectory)/\(messagesSourceFile)")
-        var sourceFiles: [SourceFile] = try FileManager.default.directoryFiles(atPath: sourceDirectory, where: { path, file, attrs in
-            let fn = "\(path)/\(file)"
-            guard fn != messageSource.filename else { return false }
-            guard fn.hasSuffix(".swift") else { return false }
-            return true
-        }).map { try SourceFile(filename: $0) }
+        let projectPath: String = (self.projectPath ?? FileManager.default.currentDirectoryPath)
+        let moduleInfo:  Module = try getModuleInfo(sourceDirectory: projectPath)
+        let moduleName:  String = moduleInfo.name
+        let sourcePath:  String = moduleInfo.sourceFiles.commonPrefix
+        let sourceFiles: [SourceFile] = try moduleInfo.sourceFiles.map({ try SourceFile(filename: $0) })
 
-        print("    Source Directory: \(sourceDirectory)")
-        print("    Archive Filename: \(archiveFile)")
-        print("Messages Source File: \(messageSource.filename)")
+        print("        Project Path: \"\(projectPath)\"")
+        print("Messages Source File: \"\(messagesSourceFile)\"")
+        print("          Build Mode: \"\(buildMode)\"")
+        print("     Build Arguments: \(buildArguments)")
+        print("         Module Name: \"\(moduleName)\"")
+        print("         Source Path: \"\(sourcePath)\"")
+        print("        Source Files: \(moduleInfo.sourceFiles.map { $0.hasPrefix(sourcePath) ? String($0[sourcePath.endIndex ..< $0.endIndex]) : $0 })")
         print()
-        print(messageSource)
+
+        for sf in sourceFiles {
+            if sf.filename.hasSuffix("StringProtocol.swift") {
+                for si in sf.strings {
+                    print(si)
+                }
+            }
+        }
+    }
+
+    private func getModuleInfo(sourceDirectory: String, loadDocs: Bool = false) throws -> Module {
+        guard let moduleInfo: Module = Module(xcodeBuildArguments: buildArguments, name: moduleName, inPath: sourceDirectory) else {
+            throw AppErrors.ModuleBuildError
+        }
+
+        if loadDocs {
+            let sw:   StopWatch   = StopWatch(start: true)
+            let docs: [SwiftDocs] = moduleInfo.docs
+            sw.stop()
+
+            print()
+            for d in docs {
+                print(d.file.path ?? "")
+                if d.file.path?.hasSuffix("/NodeList.swift") ?? false {
+                    print(d.description)
+                }
+            }
+
+            print()
+            print(sw.description)
+        }
+        return moduleInfo
     }
 }
 

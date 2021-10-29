@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1117D4C0E4F00649E0FAADD4 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D09C2CE4F9D911569FD2 /* AppErrors.swift */; };
+		1117D551DE1F7FFB5077B892 /* Collection+StringCondenser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */; };
 		1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D312CD5AC7FB9C45D578 /* SourceFile.swift */; };
 		1117DACDCEBE801C6A355276 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D77798EE5FA4CA2BC6F9 /* main.swift */; };
+		1117DC9EEC868611D0C537E2 /* SourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117DFF9A744381E06D7F53F /* SourceItem.swift */; };
 		831C002627209B2B0084F284 /* Rubicon in Frameworks */ = {isa = PBXBuildFile; productRef = 831C002527209B2B0084F284 /* Rubicon */; };
-		8360F7C82720FCE000E732AA /* SourceKittenFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 8360F7C72720FCE000E732AA /* SourceKittenFramework */; };
-		8366AD862720A3E2004A21C2 /* RedBlackTree in Frameworks */ = {isa = PBXBuildFile; productRef = 8366AD852720A3E2004A21C2 /* RedBlackTree */; };
 		8366AD892720A4F6004A21C2 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8366AD882720A4F6004A21C2 /* ArgumentParser */; };
+		83D0EF6A2726C020002EE5EA /* SourceKittenFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 83D0EF692726C020002EE5EA /* SourceKittenFramework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+StringCondenser.swift"; sourceTree = "<group>"; };
+		1117D09C2CE4F9D911569FD2 /* AppErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		1117D2AB0EC0FC93DDA01124 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1117D312CD5AC7FB9C45D578 /* SourceFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
 		1117D44668D7FA022D5AE88C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
@@ -36,6 +40,7 @@
 		1117D5DB159CFE80A8AE4D32 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		1117D77798EE5FA4CA2BC6F9 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1117D8818B8FE8D0E8AC6A0A /* Notes on SourceKittenFramework.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Notes on SourceKittenFramework.md"; sourceTree = "<group>"; };
+		1117DFF9A744381E06D7F53F /* SourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceItem.swift; sourceTree = "<group>"; };
 		837C7545272093E600531F0F /* StringCondenser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StringCondenser; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,9 +50,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8366AD892720A4F6004A21C2 /* ArgumentParser in Frameworks */,
-				8366AD862720A3E2004A21C2 /* RedBlackTree in Frameworks */,
 				831C002627209B2B0084F284 /* Rubicon in Frameworks */,
-				8360F7C82720FCE000E732AA /* SourceKittenFramework in Frameworks */,
+				83D0EF6A2726C020002EE5EA /* SourceKittenFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,9 @@
 			children = (
 				1117D77798EE5FA4CA2BC6F9 /* main.swift */,
 				1117D312CD5AC7FB9C45D578 /* SourceFile.swift */,
+				1117D09C2CE4F9D911569FD2 /* AppErrors.swift */,
+				1117DFF9A744381E06D7F53F /* SourceItem.swift */,
+				1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */,
 			);
 			path = StringCondenser;
 			sourceTree = "<group>";
@@ -120,9 +127,8 @@
 			name = StringCondenser;
 			packageProductDependencies = (
 				831C002527209B2B0084F284 /* Rubicon */,
-				8366AD852720A3E2004A21C2 /* RedBlackTree */,
 				8366AD882720A4F6004A21C2 /* ArgumentParser */,
-				8360F7C72720FCE000E732AA /* SourceKittenFramework */,
+				83D0EF692726C020002EE5EA /* SourceKittenFramework */,
 			);
 			productName = StringCondenser;
 			productReference = 837C7545272093E600531F0F /* StringCondenser */;
@@ -154,10 +160,9 @@
 			);
 			mainGroup = 837C753C272093E600531F0F;
 			packageReferences = (
-				831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */,
-				8366AD842720A3E2004A21C2 /* XCRemoteSwiftPackageReference "RedBlackTree" */,
-				8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */,
-				8360F7C62720FCE000E732AA /* XCRemoteSwiftPackageReference "SourceKitten" */,
+				831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */,
+				8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten" */,
 			);
 			productRefGroup = 837C7546272093E600531F0F /* Products */;
 			projectDirPath = "";
@@ -175,6 +180,9 @@
 			files = (
 				1117DACDCEBE801C6A355276 /* main.swift in Sources */,
 				1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */,
+				1117D4C0E4F00649E0FAADD4 /* AppErrors.swift in Sources */,
+				1117DC9EEC868611D0C537E2 /* SourceItem.swift in Sources */,
+				1117D551DE1F7FFB5077B892 /* Collection+StringCondenser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,31 +354,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */ = {
+		831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GalenRhodes/Rubicon.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.8.0;
+				minimumVersion = 0.9.0;
 			};
 		};
-		8360F7C62720FCE000E732AA /* XCRemoteSwiftPackageReference "SourceKitten" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jpsim/SourceKitten";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.31.1;
-			};
-		};
-		8366AD842720A3E2004A21C2 /* XCRemoteSwiftPackageReference "RedBlackTree" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GalenRhodes/RedBlackTree";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */ = {
+		8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
 			requirement = {
@@ -378,28 +370,31 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "http://github.com/GalenRhodes/SourceKitten.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.31.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		831C002527209B2B0084F284 /* Rubicon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */;
+			package = 831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */;
 			productName = Rubicon;
-		};
-		8360F7C72720FCE000E732AA /* SourceKittenFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8360F7C62720FCE000E732AA /* XCRemoteSwiftPackageReference "SourceKitten" */;
-			productName = SourceKittenFramework;
-		};
-		8366AD852720A3E2004A21C2 /* RedBlackTree */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8366AD842720A3E2004A21C2 /* XCRemoteSwiftPackageReference "RedBlackTree" */;
-			productName = RedBlackTree;
 		};
 		8366AD882720A4F6004A21C2 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */;
+			package = 8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		83D0EF692726C020002EE5EA /* SourceKittenFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten" */;
+			productName = SourceKittenFramework;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
