@@ -27,16 +27,14 @@ class SourceItem: CustomStringConvertible {
     }
 
     let kind:    ItemKind
-    let range:   Range<String.Index>
     let nsRange: NSRange
     let str:     String
 
     init(kind: ItemKind, range: NSRange, in str: String) {
         self.kind = kind
         self.nsRange = range
-        self.range = Range<String.Index>(self.nsRange, in: str)!
         self.str = str
     }
 
-    private(set) lazy var description: String = { "[ Kind: \"%s\"; Offset: %d; Length: %d; Value: \"%s\" ]".format(kind, nsRange.location, nsRange.length, String(str[range])) }()
+    private(set) lazy var description: String = { "[ Kind: \"%s\"; Offset: %d; Length: %d; Value: \"%s\" ]".format(kind, nsRange.location, nsRange.length, str) }()
 }

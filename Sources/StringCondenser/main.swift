@@ -40,6 +40,14 @@ struct StringCondenser: ParsableCommand {
     //@f:1
 
     mutating func run() throws {
+        let ch: Character = "🇺🇸"
+        var i: Int = 0
+
+        for x in ch.utf8 {
+            print("\(i++): \(x)")
+        }
+    }
+    mutating func run2() throws {
         let projectPath: String = (self.projectPath ?? FileManager.default.currentDirectoryPath)
         let moduleInfo:  Module = try getModuleInfo(sourceDirectory: projectPath)
         let moduleName:  String = moduleInfo.name

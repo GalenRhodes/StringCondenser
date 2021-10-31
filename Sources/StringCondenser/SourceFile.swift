@@ -40,7 +40,7 @@ class SourceFile: CustomStringConvertible, CustomDebugStringConvertible {
 
                 let s = String(data: bytes[Int(off) ..< Int(off + len)], encoding: .utf8)!
 
-                arr <+ SourceItem(kind: .kString, range: NSRange(location: Int(off - 1), length: Int(len)), in: contents)
+                arr <+ SourceItem(kind: .kString, range: NSRange(location: Int(off - 1), length: Int(len)), in: s)
             }
         }
         return arr
