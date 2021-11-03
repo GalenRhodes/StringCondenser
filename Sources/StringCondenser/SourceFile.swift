@@ -24,7 +24,7 @@ class SourceFile: CustomStringConvertible, CustomDebugStringConvertible {
 
     let file:     File
     let filename: String
-    lazy var bytes: Data = contents.data(using: .utf8)!
+    lazy private(set) var indexCache: ByteOffsetString = ByteOffsetString(contents)
 
     init(filename: String) throws {
         self.filename = filename
@@ -37,10 +37,7 @@ class SourceFile: CustomStringConvertible, CustomDebugStringConvertible {
         var arr: [SourceItem] = []
         for m2 in m1 {
             if let kind = m2["key.kind"] as? String, kind == "source.lang.swift.syntaxtype.string", let off = m2["key.offset"] as? Int64, let len = m2["key.length"] as? Int64 {
-
-                let s = String(data: bytes[Int(off) ..< Int(off + len)], encoding: .utf8)!
-
-                arr <+ SourceItem(kind: .kString, range: NSRange(location: Int(off - 1), length: Int(len)), in: s)
+                arr <+ SourceItem(kind: .kString, byteRange: off ..< (off + len), in: indexCache)
             }
         }
         return arr

@@ -39,7 +39,7 @@ struct StringCondenser: ParsableCommand {
     @Argument(help: "Build arguments to be passed to either Xcode or the Swift Package Manager.")                         var buildArguments:     [String]  = []
     //@f:1
 
-    mutating func run() throws {
+    mutating func run2() throws {
         let ch: Character = "🇺🇸"
         var i: Int = 0
 
@@ -47,7 +47,8 @@ struct StringCondenser: ParsableCommand {
             print("\(i++): \(x)")
         }
     }
-    mutating func run2() throws {
+
+    mutating func run() throws {
         let projectPath: String = (self.projectPath ?? FileManager.default.currentDirectoryPath)
         let moduleInfo:  Module = try getModuleInfo(sourceDirectory: projectPath)
         let moduleName:  String = moduleInfo.name
@@ -66,7 +67,7 @@ struct StringCondenser: ParsableCommand {
         for sf in sourceFiles {
             if sf.filename.hasSuffix("StringProtocol.swift") {
                 for si in sf.strings {
-                    print(si)
+                    if si.isComplete { print(si) }
                 }
             }
         }

@@ -26,15 +26,23 @@ class SourceItem: CustomStringConvertible {
         case kIdentifier
     }
 
-    let kind:    ItemKind
-    let nsRange: NSRange
-    let str:     String
+    let kind: ItemKind
+    lazy private(set) var range:      Range<StringIndex> = indexCache[byteRange]
+    lazy private(set) var str:        String             = String(indexCache.str[range])
+    lazy private(set) var isComplete: Bool               = ((byteRange.count > 1) && (self[byteRange.lowerBound] == "\"") && (self[byteRange.upperBound - 1] == "\""))
 
-    init(kind: ItemKind, range: NSRange, in str: String) {
+    private let byteRange:  Range<Int64>
+    private let indexCache: ByteOffsetString
+
+    init(kind: ItemKind, byteRange: Range<Int64>, in indexCache: ByteOffsetString) {
         self.kind = kind
-        self.nsRange = range
-        self.str = str
+        self.byteRange = byteRange
+        self.indexCache = indexCache
     }
 
-    private(set) lazy var description: String = { "[ Kind: \"%s\"; Offset: %d; Length: %d; Value: \"%s\" ]".format(kind, nsRange.location, nsRange.length, str) }()
+    private subscript(offset: Int64) -> Character {
+        indexCache.str[indexCache[offset]]
+    }
+
+    private(set) lazy var description: String = { "[ Kind: \"%s\"; Offset: %d; Length: %d; Value: \"%s\" ]".format(kind, byteRange.lowerBound, byteRange.count, str) }()
 }

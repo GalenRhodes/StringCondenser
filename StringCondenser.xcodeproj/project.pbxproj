@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1117D4C0E4F00649E0FAADD4 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D09C2CE4F9D911569FD2 /* AppErrors.swift */; };
 		1117D551DE1F7FFB5077B892 /* Collection+StringCondenser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */; };
-		1117D68A3437BA88EC7BE1F1 /* StringIndexCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D7BBE9292C0CD1BD035D /* StringIndexCache.swift */; };
+		1117D68A3437BA88EC7BE1F1 /* ByteOffsetString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D7BBE9292C0CD1BD035D /* ByteOffsetString.swift */; };
 		1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D312CD5AC7FB9C45D578 /* SourceFile.swift */; };
 		1117DACDCEBE801C6A355276 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D77798EE5FA4CA2BC6F9 /* main.swift */; };
 		1117DC9EEC868611D0C537E2 /* SourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117DFF9A744381E06D7F53F /* SourceItem.swift */; };
@@ -40,7 +40,7 @@
 		1117D5B5AB1735709CF175DB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1117D5DB159CFE80A8AE4D32 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		1117D77798EE5FA4CA2BC6F9 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		1117D7BBE9292C0CD1BD035D /* StringIndexCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndexCache.swift; sourceTree = "<group>"; };
+		1117D7BBE9292C0CD1BD035D /* ByteOffsetString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteOffsetString.swift; sourceTree = "<group>"; };
 		1117D8818B8FE8D0E8AC6A0A /* Notes on SourceKittenFramework.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Notes on SourceKittenFramework.md"; sourceTree = "<group>"; };
 		1117DFF9A744381E06D7F53F /* SourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceItem.swift; sourceTree = "<group>"; };
 		837C7545272093E600531F0F /* StringCondenser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StringCondenser; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,7 +68,7 @@
 				1117D09C2CE4F9D911569FD2 /* AppErrors.swift */,
 				1117DFF9A744381E06D7F53F /* SourceItem.swift */,
 				1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */,
-				1117D7BBE9292C0CD1BD035D /* StringIndexCache.swift */,
+				1117D7BBE9292C0CD1BD035D /* ByteOffsetString.swift */,
 			);
 			path = StringCondenser;
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 				1117D4C0E4F00649E0FAADD4 /* AppErrors.swift in Sources */,
 				1117DC9EEC868611D0C537E2 /* SourceItem.swift in Sources */,
 				1117D551DE1F7FFB5077B892 /* Collection+StringCondenser.swift in Sources */,
-				1117D68A3437BA88EC7BE1F1 /* StringIndexCache.swift in Sources */,
+				1117D68A3437BA88EC7BE1F1 /* ByteOffsetString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
