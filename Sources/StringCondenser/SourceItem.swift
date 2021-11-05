@@ -27,9 +27,8 @@ class SourceItem: CustomStringConvertible {
     }
 
     let kind: ItemKind
-    lazy private(set) var range:      Range<StringIndex> = indexCache[byteRange]
-    lazy private(set) var str:        String             = String(indexCache.str[range])
-    lazy private(set) var isComplete: Bool               = ((byteRange.count > 1) && (self[byteRange.lowerBound] == "\"") && (self[byteRange.upperBound - 1] == "\""))
+    lazy private(set) var str:        String = indexCache.description
+    lazy private(set) var isComplete: Bool   = ((byteRange.count > 1) && (indexCache[byteRange.lowerBound] == "\"") && (indexCache[byteRange.upperBound - 1] == "\""))
 
     private let byteRange:  Range<Int64>
     private let indexCache: ByteOffsetString
@@ -38,10 +37,6 @@ class SourceItem: CustomStringConvertible {
         self.kind = kind
         self.byteRange = byteRange
         self.indexCache = indexCache
-    }
-
-    private subscript(offset: Int64) -> Character {
-        indexCache.str[indexCache[offset]]
     }
 
     private(set) lazy var description: String = { "[ Kind: \"%s\"; Offset: %d; Length: %d; Value: \"%s\" ]".format(kind, byteRange.lowerBound, byteRange.count, str) }()

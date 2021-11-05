@@ -29,8 +29,8 @@ class ByteOffsetString: Hashable, Equatable, Comparable, BidirectionalCollection
 
     lazy private(set) var description: String = String(_substring)
 
-    private typealias CacheItem = (stringIndex: StringIndex, offset: Int64)
-    private typealias IndexOfResult = (elem: CacheItem?, cIdx: Int)
+    typealias CacheItem = (stringIndex: StringIndex, offset: Int64)
+    typealias IndexOfResult = (elem: CacheItem?, cIdx: Int)
 
     private let _range: Range<Int64>
     private let _str:   String
@@ -42,6 +42,11 @@ class ByteOffsetString: Hashable, Equatable, Comparable, BidirectionalCollection
         self.init(str, range: 0 ..< Int64(str.utf8.count))
     }
 
+    /// Constructor
+    ///
+    /// - Parameters:
+    ///   - str:
+    ///   - range:
     private init(_ str: String, range: Range<Int64>) {
         self._str = str
         self._range = range
@@ -122,25 +127,28 @@ class ByteOffsetString: Hashable, Equatable, Comparable, BidirectionalCollection
     /// Get a cached index for a given offset. This method will perform a binary search of the
     /// cache array.
     ///
-    /// - Parameter offset: The offset.
+    /// - Parameters:
+    ///   - offset: The offset.
+    ///   - left: The left bounds.
+    ///   - right: The right bounds.
     /// - Returns: A tuple that contains the cache item and the index in the cache array
     ///            where it was found or a `nil` value and the index where the cached item
     ///            should have been found.
     ///
-    private func cachedIndexFor(offset: Int64) -> IndexOfResult {
-        var left  = _cache.startIndex
-        var right = (_cache.endIndex - 1)
+    private func cachedIndexFor(offset: Int64, left: Int, right: Int) -> IndexOfResult {
+        guard left <= right else { return (nil, left) }
+        let mid = (((right - left) / 2) + left)
+        let e   = _cache[mid]
 
-        while left <= right {
-            let mid = (((right - left) / 2) + left)
-            let e   = _cache[mid]
-
-            if e.offset == offset { return (e, mid) }
-            else if e.offset < offset { left = (mid + 1) }
-            else { right = (mid - 1) }
+        if e.offset == offset {
+            return (e, mid)
         }
-
-        return (nil, left)
+        else if e.offset < offset {
+            return cachedIndexFor(offset: offset, left: mid + 1, right: right)
+        }
+        else {
+            return cachedIndexFor(offset: offset, left: left, right: mid - 1)
+        }
     }
 }
 
@@ -148,6 +156,17 @@ extension ByteOffsetString {
     @inlinable var startIndex:       Index { _range.lowerBound }
     @inlinable var endIndex:         Index { _range.upperBound }
     @inlinable var debugDescription: String { description }
+
+    /*==========================================================================================================*/
+    /// Get a cached index for a given offset. This method will perform a binary search of the
+    /// cache array.
+    ///
+    /// - Parameter offset: The offset.
+    /// - Returns: A tuple that contains the cache item and the index in the cache array
+    ///            where it was found or a `nil` value and the index where the cached item
+    ///            should have been found.
+    ///
+    @inlinable func cachedIndexFor(offset: Int64) -> IndexOfResult { cachedIndexFor(offset: offset, left: _cache.startIndex, right: _cache.endIndex - 1) }
 
     @inlinable func hash(into hasher: inout Hasher) { hasher.combine(_str) }
 
