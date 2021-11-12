@@ -39,15 +39,6 @@ struct StringCondenser: ParsableCommand {
     @Argument(help: "Build arguments to be passed to either Xcode or the Swift Package Manager.")                         var buildArguments:     [String]  = []
     //@f:1
 
-    mutating func run2() throws {
-        let ch: Character = "🇺🇸"
-        var i: Int = 0
-
-        for x in ch.utf8 {
-            print("\(i++): \(x)")
-        }
-    }
-
     mutating func run() throws {
         let projectPath: String = (self.projectPath ?? FileManager.default.currentDirectoryPath)
         let moduleInfo:  Module = try getModuleInfo(sourceDirectory: projectPath)
@@ -64,18 +55,17 @@ struct StringCondenser: ParsableCommand {
         print("        Source Files: \(moduleInfo.sourceFiles.map { $0.hasPrefix(sourcePath) ? String($0[sourcePath.endIndex ..< $0.endIndex]) : $0 })")
         print()
 
-        for sf in sourceFiles {
-            if sf.filename.hasSuffix("StringProtocol.swift") {
-                for si in sf.strings {
-                    if si.isComplete { print(si) }
-                }
-            }
-        }
+    }
+
+    private func getMessagesFile(sourceFiles: [SourceFile], sourcePath: String) -> SourceFile? {
+        let x = "\(sourcePath)\(messagesSourceFile)"
+        for sf in sourceFiles { if sf.filename == x { return sf } }
+        return nil
     }
 
     private func getModuleInfo(sourceDirectory: String, loadDocs: Bool = false) throws -> Module {
         guard let moduleInfo: Module = Module(xcodeBuildArguments: buildArguments, name: moduleName, inPath: sourceDirectory) else {
-            throw AppErrors.ModuleBuildError
+            throw AppErrors.ModuleBuildError(description: "")
         }
 
         if loadDocs {

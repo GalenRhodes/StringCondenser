@@ -11,8 +11,9 @@
 		1117D551DE1F7FFB5077B892 /* Collection+StringCondenser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */; };
 		1117D68A3437BA88EC7BE1F1 /* ByteOffsetString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D7BBE9292C0CD1BD035D /* ByteOffsetString.swift */; };
 		1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D312CD5AC7FB9C45D578 /* SourceFile.swift */; };
+		1117D9671B1DB445EA5CDE87 /* StringProtocol+StringCondenser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D11907CD5E509693BA9F /* StringProtocol+StringCondenser.swift */; };
 		1117DACDCEBE801C6A355276 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117D77798EE5FA4CA2BC6F9 /* main.swift */; };
-		1117DC9EEC868611D0C537E2 /* SourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117DFF9A744381E06D7F53F /* SourceItem.swift */; };
+		1117DE9217B984EA765D8249 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117DF59865C355E75E836B3 /* Tools.swift */; };
 		831C002627209B2B0084F284 /* Rubicon in Frameworks */ = {isa = PBXBuildFile; productRef = 831C002527209B2B0084F284 /* Rubicon */; };
 		8366AD892720A4F6004A21C2 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8366AD882720A4F6004A21C2 /* ArgumentParser */; };
 		83D0EF6A2726C020002EE5EA /* SourceKittenFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 83D0EF692726C020002EE5EA /* SourceKittenFramework */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+StringCondenser.swift"; sourceTree = "<group>"; };
 		1117D09C2CE4F9D911569FD2 /* AppErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
+		1117D11907CD5E509693BA9F /* StringProtocol+StringCondenser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringProtocol+StringCondenser.swift"; sourceTree = "<group>"; };
 		1117D2AB0EC0FC93DDA01124 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1117D312CD5AC7FB9C45D578 /* SourceFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
 		1117D44668D7FA022D5AE88C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		1117D77798EE5FA4CA2BC6F9 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1117D7BBE9292C0CD1BD035D /* ByteOffsetString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteOffsetString.swift; sourceTree = "<group>"; };
 		1117D8818B8FE8D0E8AC6A0A /* Notes on SourceKittenFramework.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Notes on SourceKittenFramework.md"; sourceTree = "<group>"; };
-		1117DFF9A744381E06D7F53F /* SourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceItem.swift; sourceTree = "<group>"; };
+		1117DF59865C355E75E836B3 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		837C7545272093E600531F0F /* StringCondenser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StringCondenser; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,9 +68,10 @@
 				1117D77798EE5FA4CA2BC6F9 /* main.swift */,
 				1117D312CD5AC7FB9C45D578 /* SourceFile.swift */,
 				1117D09C2CE4F9D911569FD2 /* AppErrors.swift */,
-				1117DFF9A744381E06D7F53F /* SourceItem.swift */,
 				1117D024102377EB89C19CBA /* Collection+StringCondenser.swift */,
 				1117D7BBE9292C0CD1BD035D /* ByteOffsetString.swift */,
+				1117DF59865C355E75E836B3 /* Tools.swift */,
+				1117D11907CD5E509693BA9F /* StringProtocol+StringCondenser.swift */,
 			);
 			path = StringCondenser;
 			sourceTree = "<group>";
@@ -163,9 +166,9 @@
 			);
 			mainGroup = 837C753C272093E600531F0F;
 			packageReferences = (
-				831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */,
-				8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten" */,
+				831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */,
+				8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */,
+				83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten.git" */,
 			);
 			productRefGroup = 837C7546272093E600531F0F /* Products */;
 			projectDirPath = "";
@@ -184,9 +187,10 @@
 				1117DACDCEBE801C6A355276 /* main.swift in Sources */,
 				1117D790806231AA6E9410E1 /* SourceFile.swift in Sources */,
 				1117D4C0E4F00649E0FAADD4 /* AppErrors.swift in Sources */,
-				1117DC9EEC868611D0C537E2 /* SourceItem.swift in Sources */,
 				1117D551DE1F7FFB5077B892 /* Collection+StringCondenser.swift in Sources */,
 				1117D68A3437BA88EC7BE1F1 /* ByteOffsetString.swift in Sources */,
+				1117DE9217B984EA765D8249 /* Tools.swift in Sources */,
+				1117D9671B1DB445EA5CDE87 /* StringProtocol+StringCondenser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +362,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */ = {
+		831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GalenRhodes/Rubicon.git";
 			requirement = {
@@ -366,7 +370,7 @@
 				minimumVersion = 0.9.0;
 			};
 		};
-		8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+		8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
 			requirement = {
@@ -374,7 +378,7 @@
 				minimumVersion = 1.0.1;
 			};
 		};
-		83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten" */ = {
+		83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "http://github.com/GalenRhodes/SourceKitten.git";
 			requirement = {
@@ -387,17 +391,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		831C002527209B2B0084F284 /* Rubicon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon" */;
+			package = 831C002427209B2B0084F284 /* XCRemoteSwiftPackageReference "Rubicon.git" */;
 			productName = Rubicon;
 		};
 		8366AD882720A4F6004A21C2 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			package = 8366AD872720A4F6004A21C2 /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */;
 			productName = ArgumentParser;
 		};
 		83D0EF692726C020002EE5EA /* SourceKittenFramework */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten" */;
+			package = 83D0EF682726C020002EE5EA /* XCRemoteSwiftPackageReference "SourceKitten.git" */;
 			productName = SourceKittenFramework;
 		};
 /* End XCSwiftPackageProductDependency section */

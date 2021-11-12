@@ -27,7 +27,8 @@ class ByteOffsetString: Hashable, Equatable, Comparable, BidirectionalCollection
     typealias Index = Int64
     typealias SubSequence = ByteOffsetString
 
-    lazy private(set) var description: String = String(_substring)
+    var description: String { asString }
+    lazy private(set) var asString: String = String(_substring)
 
     typealias CacheItem = (stringIndex: StringIndex, offset: Int64)
     typealias IndexOfResult = (elem: CacheItem?, cIdx: Int)
@@ -155,7 +156,7 @@ class ByteOffsetString: Hashable, Equatable, Comparable, BidirectionalCollection
 extension ByteOffsetString {
     @inlinable var startIndex:       Index { _range.lowerBound }
     @inlinable var endIndex:         Index { _range.upperBound }
-    @inlinable var debugDescription: String { description }
+    @inlinable var debugDescription: String { asString }
 
     /*==========================================================================================================*/
     /// Get a cached index for a given offset. This method will perform a binary search of the
@@ -168,25 +169,25 @@ extension ByteOffsetString {
     ///
     @inlinable func cachedIndexFor(offset: Int64) -> IndexOfResult { cachedIndexFor(offset: offset, left: _cache.startIndex, right: _cache.endIndex - 1) }
 
-    @inlinable func hash(into hasher: inout Hasher) { hasher.combine(_str) }
+    @inlinable func hash(into hasher: inout Hasher) { hasher.combine(asString) }
 
-    @inlinable static func == (lhs: ByteOffsetString, rhs: ByteOffsetString) -> Bool { lhs._str == rhs._str }
+    @inlinable static func == (lhs: ByteOffsetString, rhs: ByteOffsetString) -> Bool { lhs.asString == rhs.asString }
 
-    @inlinable static func < (lhs: ByteOffsetString, rhs: ByteOffsetString) -> Bool { lhs._str < rhs._str }
+    @inlinable static func < (lhs: ByteOffsetString, rhs: ByteOffsetString) -> Bool { lhs.asString < rhs.asString }
 
-    @inlinable static func == (lhs: String, rhs: ByteOffsetString) -> Bool { lhs == rhs._str }
+    @inlinable static func == (lhs: String, rhs: ByteOffsetString) -> Bool { lhs == rhs.asString }
 
-    @inlinable static func < (lhs: String, rhs: ByteOffsetString) -> Bool { lhs < rhs._str }
+    @inlinable static func < (lhs: String, rhs: ByteOffsetString) -> Bool { lhs < rhs.asString }
 
-    @inlinable static func == (lhs: ByteOffsetString, rhs: String) -> Bool { lhs._str == rhs }
+    @inlinable static func == (lhs: ByteOffsetString, rhs: String) -> Bool { lhs.asString == rhs }
 
-    @inlinable static func < (lhs: ByteOffsetString, rhs: String) -> Bool { lhs._str < rhs }
+    @inlinable static func < (lhs: ByteOffsetString, rhs: String) -> Bool { lhs.asString < rhs }
 
-    @inlinable static func + (lhs: ByteOffsetString, rhs: ByteOffsetString) -> String { lhs._str + rhs._str }
+    @inlinable static func + (lhs: ByteOffsetString, rhs: ByteOffsetString) -> String { lhs.asString + rhs.asString }
 
-    @inlinable static func + (lhs: String, rhs: ByteOffsetString) -> String { lhs + rhs._str }
+    @inlinable static func + (lhs: String, rhs: ByteOffsetString) -> String { lhs + rhs.asString }
 
-    @inlinable static func + (lhs: ByteOffsetString, rhs: String) -> String { lhs._str + rhs }
+    @inlinable static func + (lhs: ByteOffsetString, rhs: String) -> String { lhs.asString + rhs }
 
     @inlinable static func += (lhs: inout String, rhs: ByteOffsetString) { lhs = (lhs + rhs) }
 }

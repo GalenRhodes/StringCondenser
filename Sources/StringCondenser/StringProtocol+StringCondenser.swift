@@ -1,9 +1,9 @@
 /*===============================================================================================================================================================================*
  *     PROJECT: StringCondenser
- *    FILENAME: SourceItem.swift
+ *    FILENAME: StringProtocol+StringCondenser.swift
  *         IDE: AppCode
  *      AUTHOR: Galen Rhodes
- *        DATE: 10/24/21
+ *        DATE: 11/12/21
  *
  * Copyright © 2021. All rights reserved.
  *
@@ -19,25 +19,25 @@ import Foundation
 import CoreFoundation
 import Rubicon
 
-class SourceItem: CustomStringConvertible {
-    enum ItemKind: String {
-        case kString
-        case kComment
-        case kIdentifier
+extension StringProtocol {
+
+    @inlinable func replacingAll(pattern: String, template: String, count: inout Int) -> String {
+        var error: Error? = nil
+        guard let rx = RegularExpression(pattern: pattern, error: &error) else { fatalError(error!.localizedDescription) }
+        let (s, c) : (String, Int) = rx.stringByReplacingMatches(in: self, withTemplate: template)
+        count = c
+        return s
     }
 
-    let kind: ItemKind
-    lazy private(set) var str:        String = indexCache.description
-    lazy private(set) var isComplete: Bool   = ((byteRange.count > 1) && (indexCache[byteRange.lowerBound] == "\"") && (indexCache[byteRange.upperBound - 1] == "\""))
-
-    private let byteRange:  Range<Int64>
-    private let indexCache: ByteOffsetString
-
-    init(kind: ItemKind, byteRange: Range<Int64>, in indexCache: ByteOffsetString) {
-        self.kind = kind
-        self.byteRange = byteRange
-        self.indexCache = indexCache
+    @inlinable func replacingAll(pattern: String, template: String) -> String {
+        var c: Int = 0
+        return replacingAll(pattern: pattern, template: template, count: &c)
     }
 
-    private(set) lazy var description: String = { "[ Kind: \"%s\"; Offset: %d; Length: %d; Value: \"%s\" ]".format(kind, byteRange.lowerBound, byteRange.count, str) }()
+    @inlinable func contains(pattern: String) -> Bool {
+        var error: Error? = nil
+        guard let rx = RegularExpression(pattern: pattern, error: &error) else { fatalError(error!.localizedDescription) }
+        return rx.firstMatch(in: self) != nil
+    }
+
 }

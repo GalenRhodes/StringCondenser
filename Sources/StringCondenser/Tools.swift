@@ -1,9 +1,9 @@
 /*===============================================================================================================================================================================*
  *     PROJECT: StringCondenser
- *    FILENAME: AppErrors.swift
+ *    FILENAME: Tools.swift
  *         IDE: AppCode
  *      AUTHOR: Galen Rhodes
- *        DATE: 10/24/21
+ *        DATE: 11/12/21
  *
  * Copyright © 2021. All rights reserved.
  *
@@ -18,15 +18,3 @@
 import Foundation
 import CoreFoundation
 import Rubicon
-
-class AppErrors: Error, CustomStringConvertible {
-    let description: String
-
-    init(description: String) { self.description = description }
-
-    class MalformedStructureMap: AppErrors {}
-
-    class ModuleBuildError: AppErrors {}
-
-    class SwiftDocsError: AppErrors {}
-}
